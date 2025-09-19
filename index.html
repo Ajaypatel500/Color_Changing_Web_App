@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <title>My App</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            transition: background-color 0.5s;
+        }
+        .color-pickers {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .color-picker{
+        width: 200px;
+        height: 50px;
+        border-radius: 5px;
+        cursor: pointer;
+               
+        }
+        .color-picker:hover {
+            opacity: 0.8;
+        }
+        </style>
+</head>
+<body>
+    <h1>Welcome to My App</h1>
+    <p>This is a color changing web app page.</p>
+    
+    <script src="app.js"></script>
+    <div class="app-page"data-page="home">
+    <div class = "app-content">
+        <ul class="color-pickers">
+            <li class="color-picker" data-color="red" style="background-color: red;"></li>
+            <li class="color-picker" data-color="green" style="background-color: green;"></li>
+            <li class="color-picker" data-color="blue" style="background-color: blue;"></li>
+            <li class="color-picker" data-color="yellow" style="background-color: yellow;"></li>
+            <li class="color-picker" data-color="purple" style="background-color: purple;"></li>
+            <li class="color-picker" data-color="orange" style="background-color: orange;"></li>
+            <li class="color-picker" data-color="pink" style="background-color: pink;"></li>
+            <li class="color-picker" data-color="brown" style="background-color: brown;"></li>
+            <li class="color-picker" data-color="gray" style="background-color: gray;"></li>
+            <li class="color-picker" data-color="black" style="background-color: black;"></li>
+            <li class="color-picker" data-color="white" style="background-color: white; border: 1px solid #ccc;"></li>
+            <li class="color-picker" data-color="cyan" style="background-color: cyan;"></li>
+        </ul>
+    </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="app.js"></script>
+    <script src="framework7.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.color-picker').on('click', function() {
+                var color = $(this).data('color');
+                $('body').css('background-color', color);
+            });
+        });
+
+        try {
+            var app = new Framework7({
+                root: '.app', 
+                name: 'My App', 
+                id: 'com.myapp.test', 
+                panel: { swipe: 'left', }, 
+                routes: [ { path: '/home/', url: 'index.html', }, ],
+            });
+            var mainView = app.views.create('.view-main');
+        } catch (e) {
+            console.error('Framework7 initialization error:', e);
+        }
+
+    </script>
+</body>
+</html>
